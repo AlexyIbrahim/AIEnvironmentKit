@@ -19,6 +19,11 @@ class ViewController: UIViewController {
         
         let env: String = AIEnvironmentKit.environmentName
         self.label_Environment.text = env
+        
+        AIEnvironmentKit.executeIfNotAppStore {
+            print("not app store")
+        }
+        
     }
 
 

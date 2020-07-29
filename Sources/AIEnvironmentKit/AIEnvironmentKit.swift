@@ -208,31 +208,67 @@ public class AIEnvironmentKit {
 
 // MARK: - public methods
 extension AIEnvironmentKit {
-    @objc final class func executeIfDebuggerAttached(callback: () -> ()) {
+    /**
+     If Xcode debugger is attached
+     
+     - Author:
+     Alexy
+    */
+    @objc public final class func executeIfDebuggerAttached(callback: () -> ()) {
         if AIEnvironmentKit.isDebuggerAttached {
             callback()
         }
     }
     
-    @objc final class func executeIfDebug(callback: () -> ()) {
+    /**
+     If built from Xcode
+     
+     - Author:
+     Alexy
+    */
+    @objc public final class func executeIfDebug(callback: () -> ()) {
         if AIEnvironmentKit.isDebug {
             callback()
         }
     }
     
-    @objc final class func executeIfAdhoc(callback: () -> ()) {
+    /**
+     If on 3rd paty distribution
+     
+     - Author:
+     Alexy
+    */
+    @objc public final class func executeIfAdhoc(callback: () -> ()) {
         if AIEnvironmentKit.isAdHoc {
             callback()
         }
     }
     
-    @objc final class func executeIfNotAppStore(callback: () -> ()) {
+    /**
+     If not on the app store
+     
+     - Author:
+     Alexy
+    */
+    @objc public final class func executeIfNotAppStore(callback: () -> ()) {
         if !AIEnvironmentKit.isAppStore {
             callback()
         }
     }
     
-    @objc final class func execute(notAppStore: () -> (), appStore: () -> ()) {
+    /**
+     If on the app store
+     
+     - Author:
+     Alexy
+    */
+    @objc public final class func executeAppStore(callback: () -> ()) {
+        if AIEnvironmentKit.isAppStore {
+            callback()
+        }
+    }
+    
+    @objc public final class func execute(notAppStore: () -> (), appStore: () -> ()) {
         if !AIEnvironmentKit.isAppStore {
             notAppStore()
         } else {
