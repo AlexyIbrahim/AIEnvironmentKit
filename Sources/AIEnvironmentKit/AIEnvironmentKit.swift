@@ -85,11 +85,6 @@ public class AIEnvironmentKit {
             }
             return false
         }
-        
-        //        if !AIEnvironmentKit.isDebug && AIEnvironmentKit.isDebugOrAdhoc {
-        //            return true
-        //        }
-        //        return false
     }()
     
     @objc public static var isTestflight: Bool = {
@@ -128,7 +123,7 @@ public class AIEnvironmentKit {
         }
     }()
     
-    // MARK: - misc
+    // MARK: - miscellaneous
     @objc public static let isRunningInAppExtension: Bool = {
         var isRunningInAppExtension = (Bundle.main.executablePath as NSString?)?.range(of: ".appex/").location != NSNotFound
         return isRunningInAppExtension
@@ -209,65 +204,71 @@ public class AIEnvironmentKit {
 // MARK: - public methods
 extension AIEnvironmentKit {
     /**
-     If Xcode debugger is attached
+     Execute if Xcode debugger is attached
      
      - Author:
      Alexy
     */
-    @objc public final class func executeIfDebuggerAttached(callback: () -> ()) {
+    @objc public final class func executeIfDebuggerAttached(code: () -> ()) {
         if AIEnvironmentKit.isDebuggerAttached {
-            callback()
+            code()
         }
     }
     
     /**
-     If built from Xcode
+     Execute if built with development certificate
      
      - Author:
      Alexy
     */
-    @objc public final class func executeIfDebug(callback: () -> ()) {
+    @objc public final class func executeIfDebug(code: () -> ()) {
         if AIEnvironmentKit.isDebug {
-            callback()
+            code()
         }
     }
     
     /**
-     If on 3rd paty distribution
+     Execute if on 3rd paty distribution, i.e: Firebase, Diawi, etc
      
      - Author:
      Alexy
     */
-    @objc public final class func executeIfAdhoc(callback: () -> ()) {
+    @objc public final class func executeIfAdhoc(code: () -> ()) {
         if AIEnvironmentKit.isAdHoc {
-            callback()
+            code()
         }
     }
     
     /**
-     If not on the app store
+     Execute if not on the App Store
      
      - Author:
      Alexy
     */
-    @objc public final class func executeIfNotAppStore(callback: () -> ()) {
+    @objc public final class func executeIfNotAppStore(code: () -> ()) {
         if !AIEnvironmentKit.isAppStore {
-            callback()
+            code()
         }
     }
     
     /**
-     If on the app store
+     Execute if on the App Store
      
      - Author:
      Alexy
     */
-    @objc public final class func executeAppStore(callback: () -> ()) {
+    @objc public final class func executeAppStore(code: () -> ()) {
         if AIEnvironmentKit.isAppStore {
-            callback()
+            code()
         }
     }
     
+    /**
+     Provide 2 execution scenarios, if on the App Store and not on the App Store
+     
+     - Author:
+     Alexy
+    */
     @objc public final class func execute(notAppStore: () -> (), appStore: () -> ()) {
         if !AIEnvironmentKit.isAppStore {
             notAppStore()
