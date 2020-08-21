@@ -15,7 +15,7 @@ A library to determine the iOS app environment
 
 #### Swift Package Manager
 
-You can use SPM to install `ProductName` by adding it to your `Package.swift`:
+You can use SPM to install `AIEnvironmentKit` by adding it to your `Package.swift`:
 
 https://github.com/AlexyIbrahim/AIEnvironmentKit.git
 
