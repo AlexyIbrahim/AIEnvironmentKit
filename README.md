@@ -17,7 +17,9 @@ A library to determine the iOS app environment
 
 You can use SPM to install `AIEnvironmentKit` by adding it to your `Package.swift`:
 
-https://github.com/AlexyIbrahim/AIEnvironmentKit.git
+```
+.package(url: "https://github.com/AlexyIbrahim/AIEnvironmentKit.git", from: "1.0.0")
+```
 
 ## Usage example
 
