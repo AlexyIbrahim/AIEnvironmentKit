@@ -257,7 +257,7 @@ extension AIEnvironmentKit {
      - Author:
      Alexy
     */
-    @objc public final class func executeAppStore(code: () -> ()) {
+    @objc public final class func executeIfAppStore(code: () -> ()) {
         if AIEnvironmentKit.isAppStore {
             code()
         }
